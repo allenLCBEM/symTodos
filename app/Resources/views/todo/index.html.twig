@@ -5,7 +5,6 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>#</th>
 			<th>Todo</th>
 			<th>Due Date</th>
 			<th></th>
@@ -14,7 +13,6 @@
 	<tbody>
 		{% for todo in todos %}
 		<tr>
-			<th scope="row">{{todo.id}}</th>
 			<td>{{todo.name}}</td>
 			<td>{{todo.dueDate|date('F j, Y')}}</td>
 			<td>

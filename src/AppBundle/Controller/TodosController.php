@@ -20,9 +20,12 @@ class TodosController extends Controller
      */
     public function listAction()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user_id = $user->getId();
+
         $todos = $this->getDoctrine()
             ->getRepository('AppBundle:Todo')
-            ->findAll();
+            ->findBy( array('user_id' => $user_id) );
 
         // replace this example code with whatever you need
         return $this->render('todo/index.html.twig', array('todos' => $todos));
@@ -55,7 +58,10 @@ class TodosController extends Controller
             $due_date = $form['due_date']->getData();
 
             $now = new\DateTime('now');
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $user_id = $user->getId();
 
+            $todo->setUserId($user_id);
             $todo->setName($name);
             $todo->setCategory($category);
             $todo->setDescription($description);
