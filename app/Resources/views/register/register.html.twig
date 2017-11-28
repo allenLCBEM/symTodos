@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="form-signin">
+	{{form_start(form)}}
+	{{form_widget(form)}}
+	<a href="/login" class="btn btn-lg btn-success btn-block">Already Registered?</a>
+	{{form_end(form)}}
+</div>	
+{% endblock %}
